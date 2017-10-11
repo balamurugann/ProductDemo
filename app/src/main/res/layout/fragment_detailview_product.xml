@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_margin="@dimen/dimen6DP"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center|left"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen40DP"
+
+            />
+
+        <TextView
+            style="@style/PriceLabel"
+            android:id="@+id/lblName"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen6DP"
+
+            />
+
+        <TextView
+            android:layout_marginLeft="@dimen/dimen10DP"
+            android:layout_marginRight="@dimen/dimen10DP"
+            style="@style/PriceLabel"
+            android:textColor="@android:color/holo_blue_dark"
+            android:text="@string/edit_product_title"
+            android:id="@+id/lblEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen6DP"
+
+            />
+    </LinearLayout>
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+        android:layout_margin="@dimen/dimen6DP"
+        android:id="@+id/lblDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+
+        android:id="@+id/lblActualPrice"
+        android:layout_margin="@dimen/dimen6DP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+        android:id="@+id/lblSalesPrice"
+        android:layout_margin="@dimen/dimen6DP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+
+        android:layout_margin="@dimen/dimen6DP"
+        android:id="@+id/lblColors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+
+        android:layout_margin="@dimen/dimen6DP"
+        android:id="@+id/lblSellerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+
+        android:layout_margin="@dimen/dimen6DP"
+        android:id="@+id/lblSellerAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/ProductDescrptionLabel"
+
+        android:layout_margin="@dimen/dimen6DP"
+        android:id="@+id/lblSellerConductNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

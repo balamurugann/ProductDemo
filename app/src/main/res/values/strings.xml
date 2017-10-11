@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">ProductDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="exception_replace_fragment">Exception occured when replace fragment</string>
+
+
+    <!-- Prodcut List -->
+    <string name="product_list_title">Product List</string>
+    <string name="no_product_found">No product found. Please click below plus icon to create new product.</string>
+
+    <!-- Create Product-->
+
+    <string name="product_name">Name</string>
+    <string name="product_description">Description</string>
+    <string name="product_actual_price">Actual Price</string>
+    <string name="product_sales_price">Sales Price</string>
+    <string name="product_color">Colors</string>
+    <string name="product_seller_name">Seller Name</string>
+    <string name="product_seller_address">Seller Address</string>
+    <string name="product_seller_contact_number">Seller Mobile Number</string>
+    <string name="product_image">Image</string>
+    <string name="add_product">ADD PRODUCT</string>
+    <string name="update_product">UPDATE PRODUCT</string>
+    <string name="create_product">Create Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="select_product_colors">Select Product Colors</string>
+    <string name="ok">OK</string>
+    <string name="no">NO</string>
+    <string name="cancel">CANCEL</string>
+
+    <!-- Show Product Image Dialog-->
+    <string name="select_image">Select Image</string>
+
+    <!-- Error Messages-->
+    <string name="enter_product_name">Please enter product name</string>
+    <string name="enter_product_description">Please enter product description</string>
+    <string name="enter_product_actual_price">Please enter product actual price</string>
+    <string name="enter_product_sales_price">Please enter product sales price</string>
+    <string name="select_colors">Please select colors</string>
+    <string name="enter_seller_name">Please enter seller name</string>
+    <string name="enter_seller_address">Please enter seller address</string>
+    <string name="enter_seller_mobile_number">Please enter mobile number</string>
+    <string name="please_select_image">Please select image</string>
+
+    <!-- Prodcut detail -->
+    <string name="product_detail_title">Product DetailView</string>
+    <string name="edit_product_title">Edit</string>
+
+</resources>
