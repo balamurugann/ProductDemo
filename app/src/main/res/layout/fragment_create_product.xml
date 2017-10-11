@@ -5,8 +5,8 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
-    android:layout_marginLeft="@dimen/dimen10DP"
-    android:layout_marginRight="@dimen/dimen10DP"
+    android:layout_marginLeft="@dimen/dimenMediumDP"
+    android:layout_marginRight="@dimen/dimenMediumDP"
     >
 
     <LinearLayout
@@ -128,19 +128,19 @@
 
         <ImageView
             android:id="@+id/imgProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/select_image"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dimen10DP"
+            android:layout_marginTop="@dimen/dimenMediumDP"
             />
         <Button android:id="@+id/btnAddProduct"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_product"
             android:background="@color/colorPrimary"
-            android:layout_marginTop="@dimen/dimen10DP"
-            android:layout_marginBottom="@dimen/dimen10DP"
+            android:layout_marginTop="@dimen/dimenMediumDP"
+            android:layout_marginBottom="@dimen/dimenMediumDP"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>

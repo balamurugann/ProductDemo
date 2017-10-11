@@ -2,7 +2,6 @@ package com.bb.productdemo.fragment.createproduct;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -40,16 +39,17 @@ import io.reactivex.schedulers.Schedulers;
  * Created by bala.natarajan on 10/10/2017.
  */
 
+/**
+ * To create new product and insert the product into local database
+ */
 public class CreateProductFragment extends BaseFragment implements View.OnClickListener, CreateProductView {
     public final static String TAG = "CreateProductFragment";
     public final static String BUNDLE_CREATE_PRODUCT = "bundle_create_product";
 
-
     private AppDatabase mDatabase;
-
     private ImageView imgProduct;
-
     private CreateProductPresenter createProductPresenter;
+    Product product;
 
     private EditText txtProductName;
     private EditText txtProductDescription;
@@ -59,12 +59,8 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
     private EditText txtSellerAddress;
     private EditText txtSellerMobileNumber;
     private EditText txtProductColor;
-
     Button btnAddProduct;
-
     TextView lblTitle;
-
-    Product product;
 
     final ArrayList<ProductColor> mColorList = new ArrayList<ProductColor>();
     // String array for alert dialog multi choice items
@@ -99,6 +95,7 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         mDatabase = AppDatabase.getInstance(getActivity().getApplicationContext());
         createProductPresenter = new CreateProductPresenterImpl(this);
 
+        // Get the product from product detail page to edit.
         Bundle bundle  = getArguments();
         if(bundle!=null){
             product = bundle.getParcelable(BUNDLE_CREATE_PRODUCT);
@@ -126,12 +123,18 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onResume() {
         super.onResume();
+        // To change the button name and label name based on Create product and Edit Product
         if(product!=null){
             btnAddProduct.setText(getString(R.string.update_product));
         }else{
             lblTitle.setText(getString(R.string.create_product));
         }
     }
+
+    /**
+     *  Initialize the views in the layout
+     * @param view
+     */
 
     private void initViews(View view){
 
@@ -155,6 +158,10 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
 
     }
 
+    /**
+     *  Set the image icon based on imagetype
+     * @param imageType type of image(mobile,headphone,powerbank)
+     */
     public void setProductImageType(String imageType){
         setProductImage(imgProduct,imageType);
     }
@@ -239,6 +246,9 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         }
     }
 
+    /**
+     * To show the dialog with color selection option
+     */
     private void showColors(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -294,7 +304,6 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         builder.setNeutralButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // make sure to clear list that duplication dont formed here
                 mColorList.clear();
             }
         });
@@ -303,6 +312,9 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         dialog.show();
     }
 
+    /**
+     * To add or update new product into database
+     */
     private void getProductDetailsToAdd(){
         Product product = new Product();
         product.setName(txtProductName.getText().toString());
@@ -372,22 +384,12 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         }
 
     }
-    private void loadCategories() {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                mDatabase.getProductDao().update(product);
-                return null;
-            }
 
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-
-            }
-        }.execute();
-    }
-
+    /**
+     *  Observable to insert the new product
+     * @param product
+     * @return
+     */
     public Observable insertProduct(final Product product) {
         return Observable.fromCallable(new Callable() {
             @Override
@@ -398,6 +400,11 @@ public class CreateProductFragment extends BaseFragment implements View.OnClickL
         });
     }
 
+    /**
+     * Observable to update the existing product
+     * @param product
+     * @return
+     */
     public Observable<Product> updateProduct(final Product product) {
         return Observable.fromCallable(new Callable() {
             @Override

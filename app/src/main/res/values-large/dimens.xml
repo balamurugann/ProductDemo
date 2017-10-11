@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="dimenNormalDP">24dp</dimen>
+    <dimen name="dimenMediumDP">15dp</dimen>
+    <dimen name="dimenExtraHighDP">75dp</dimen>
+    <dimen name="dimenHighDP">60dp</dimen>
+    <dimen name="dimenSmallDP">9dp</dimen>
+
+</resources>

@@ -17,7 +17,10 @@ import com.squareup.picasso.Picasso;
 
 /**
  * Created by bala.natarajan on 10/10/2017.
+ *
+ * Provide common functionality for Create,Update and List product screen
  */
+
 
 public class BaseFragment extends Fragment {
     @Nullable
@@ -40,6 +43,11 @@ public class BaseFragment extends Fragment {
 
     }
 
+    /**
+     * To set the product icon
+     * @param image
+     * @param imageType
+     */
     public void setProductImage(ImageView image,String imageType){
         if(imageType.equals(AppConstants.IMAGE_MOBILE)){
             image.setTag(AppConstants.IMAGE_MOBILE);
@@ -53,6 +61,11 @@ public class BaseFragment extends Fragment {
         }
     }
 
+    /**
+     * To set the full size image of product
+     * @param image
+     * @param imageType
+     */
     public void setProductFullSizeImage(ImageView image,String imageType){
         if(imageType.equals(AppConstants.IMAGE_MOBILE)){
             image.setTag(AppConstants.IMAGE_MOBILE);

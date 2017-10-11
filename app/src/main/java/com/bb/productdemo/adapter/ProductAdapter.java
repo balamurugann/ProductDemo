@@ -17,6 +17,9 @@ import java.util.List;
  * Created by bala.natarajan on 10/11/2017.
  */
 
+/**
+ * Adapter to adapt the products data to recycler view
+ */
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private List<Product> lstProducts = new ArrayList<>();
@@ -56,18 +59,28 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         return lstProducts.get(position);
     }
 
+    /**
+     *  Set new product list and notify the adapter
+     * @param products list of products from database
+     */
     public void setProducts(@NonNull List<Product> products) {
         this.lstProducts = products;
         notifyDataSetChanged();
     }
 
+    /**
+     *  To handle recycler view click
+     */
     public interface ActionCallback {
-        void onRedirectToDetail(Product note);
+        /**
+         *  Called when clicking recycler view
+         * @param product product to pass from list to detailview page
+         */
+        void onRedirectToDetail(Product product);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, description, price;
-
         ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.name);

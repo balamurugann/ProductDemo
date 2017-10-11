@@ -4,6 +4,9 @@ package com.bb.productdemo.fragment.model;
  * Created by bala.natarajan on 10/11/2017.
  */
 
+/**
+ *  Represent the product color name and state of the color whether selected or not.
+ */
 public class ProductColor {
     private String name;
     private boolean selected;

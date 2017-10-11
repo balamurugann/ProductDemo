@@ -32,16 +32,18 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by bala.natarajan on 10/10/2017.
+ *
+ * To list the products from the database
  */
 
 public class ListProductFragment extends BaseFragment implements ProductAdapter.ActionCallback {
     public final static String TAG = "ListProductFragment";
 
-    private ProductAdapter adapter;
+    private ProductAdapter mAdapter;
     TextView lblNoProduct;
 
     FloatingActionButton btnFab;
-    RecyclerView recyclerListProduct;
+    RecyclerView mRecyclerListProduct;
 
     private AppDatabase mDatabase;
 
@@ -53,16 +55,18 @@ public class ListProductFragment extends BaseFragment implements ProductAdapter.
         return view;
     }
 
+    /**
+     * Initialize the views from the layout and option to delete the product when swipe the list
+     * @param view
+     */
     private void initViews(View view){
         btnFab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
 
-
-
         lblNoProduct = (TextView)view.findViewById(R.id.lblNoProduct);
 
-        recyclerListProduct = (RecyclerView) view.findViewById(R.id.recyclerListProduct);
-        recyclerListProduct.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerListProduct.setAdapter(adapter);
+        mRecyclerListProduct = (RecyclerView) view.findViewById(R.id.recyclerListProduct);
+        mRecyclerListProduct.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerListProduct.setAdapter(mAdapter);
 
 
         ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -73,7 +77,7 @@ public class ListProductFragment extends BaseFragment implements ProductAdapter.
 
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                deleteProduct(adapter.getProducts(viewHolder.getAdapterPosition())).subscribeOn(Schedulers.newThread())
+                deleteProduct(mAdapter.getProducts(viewHolder.getAdapterPosition())).subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer() {
                             @Override
@@ -98,21 +102,21 @@ public class ListProductFragment extends BaseFragment implements ProductAdapter.
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
-        itemTouchHelper.attachToRecyclerView(recyclerListProduct);
-
+        itemTouchHelper.attachToRecyclerView(mRecyclerListProduct);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        adapter  = new ProductAdapter(this);
-
+        mAdapter  = new ProductAdapter(this);
         mDatabase = AppDatabase.getInstance(getActivity().getApplicationContext());
         listProcuctFromDB();
-
     }
 
+    /**
+     * Display the product from local database
+     */
     private void listProcuctFromDB(){
         mDatabase.getProductDao().getAllProduct().subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Product>>() {
@@ -124,13 +128,13 @@ public class ListProductFragment extends BaseFragment implements ProductAdapter.
             public void onNext(List<Product> products) {
                 if(products.size()>0){
                     lblNoProduct.setVisibility(View.GONE);
-                    recyclerListProduct.setVisibility(View.VISIBLE);
+                    mRecyclerListProduct.setVisibility(View.VISIBLE);
                 }else{
                     lblNoProduct.setVisibility(View.VISIBLE);
-                    recyclerListProduct.setVisibility(View.GONE);
+                    mRecyclerListProduct.setVisibility(View.GONE);
                 }
-                adapter.setProducts(products);
-                recyclerListProduct.setAdapter(adapter);
+                mAdapter.setProducts(products);
+                mRecyclerListProduct.setAdapter(mAdapter);
             }
             @Override
             public void onError(Throwable t) {
@@ -142,6 +146,11 @@ public class ListProductFragment extends BaseFragment implements ProductAdapter.
         });
     }
 
+    /**
+     * Observable to delete the product
+     * @param product
+     * @return
+     */
     public Observable deleteProduct(final Product product) {
         return Observable.fromCallable(new Callable() {
             @Override

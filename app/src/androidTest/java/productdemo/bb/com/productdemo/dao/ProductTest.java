@@ -2,6 +2,8 @@ package productdemo.bb.com.productdemo.dao;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.bb.productdemo.database.AppDatabase;
 import com.bb.productdemo.database.dao.ProductDao;
@@ -14,17 +16,14 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * @author acampbell
+ * @author  bala.natarajan
  */
 @RunWith(AndroidJUnit4.class)
 public class ProductTest {
-
     private ProductDao productDao;
     private AppDatabase db;
 

@@ -4,6 +4,9 @@ package com.bb.productdemo.fragment.createproduct;
  * Created by bala.natarajan on 10/11/2017.
  */
 
+/**
+ * Provide implementation for Presenter to invoke error and success method based on text fields validation
+ */
 public class CreateProductPresenterImpl implements CreateProductPresenter,CreateProductInteractor.OnCreateProductFinishedListener {
 
     private CreateProductView createProductView;

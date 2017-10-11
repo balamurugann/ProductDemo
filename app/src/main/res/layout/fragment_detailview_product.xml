@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:gravity="center|left"
@@ -15,7 +15,7 @@
             android:id="@+id/imgProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen40DP"
+            android:layout_marginLeft="@dimen/dimenHighDP"
 
             />
 
@@ -25,27 +25,27 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen6DP"
+            android:layout_margin="@dimen/dimenSmallDP"
 
             />
 
         <TextView
-            android:layout_marginLeft="@dimen/dimen10DP"
-            android:layout_marginRight="@dimen/dimen10DP"
+            android:layout_marginLeft="@dimen/dimenMediumDP"
+            android:layout_marginRight="@dimen/dimenMediumDP"
             style="@style/PriceLabel"
             android:textColor="@android:color/holo_blue_dark"
             android:text="@string/edit_product_title"
             android:id="@+id/lblEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen6DP"
+            android:layout_margin="@dimen/dimenSmallDP"
 
             />
     </LinearLayout>
 
     <TextView
         style="@style/ProductDescrptionLabel"
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:id="@+id/lblDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -54,21 +54,21 @@
         style="@style/ProductDescrptionLabel"
 
         android:id="@+id/lblActualPrice"
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         style="@style/ProductDescrptionLabel"
         android:id="@+id/lblSalesPrice"
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         style="@style/ProductDescrptionLabel"
 
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:id="@+id/lblColors"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -76,7 +76,7 @@
     <TextView
         style="@style/ProductDescrptionLabel"
 
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:id="@+id/lblSellerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -84,7 +84,7 @@
     <TextView
         style="@style/ProductDescrptionLabel"
 
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:id="@+id/lblSellerAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -92,7 +92,7 @@
     <TextView
         style="@style/ProductDescrptionLabel"
 
-        android:layout_margin="@dimen/dimen6DP"
+        android:layout_margin="@dimen/dimenSmallDP"
         android:id="@+id/lblSellerConductNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -6,6 +6,9 @@ import android.text.TextUtils;
  * Created by bala.natarajan on 10/11/2017.
  */
 
+/**
+ * Validate the text fields in create product page
+ */
 public class CreateProductInteractorImpl implements CreateProductInteractor {
     @Override
     public void createProduct(String name, String description, String actual_price, String sales_price,

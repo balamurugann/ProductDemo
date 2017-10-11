@@ -15,6 +15,9 @@ import com.bb.productdemo.utils.AppConstants;
  * Created by bala.natarajan on 10/2/2017.
  */
 
+/**
+ * Fragment Dialog to select the product image
+ */
 public class ImageSelectDialog extends DialogFragment implements View.OnClickListener{
     SelectImageListener selectImageListener;
     @Override
@@ -42,26 +45,30 @@ public class ImageSelectDialog extends DialogFragment implements View.OnClickLis
         }
     }
 
+    /**
+     * Initialize the views in the layout
+     * @param view
+     */
     private void initViews(View view){
-        ImageView img1 = (ImageView)view.findViewById(R.id.img1);
-        ImageView img2 = (ImageView)view.findViewById(R.id.img2);
-        ImageView img3 = (ImageView)view.findViewById(R.id.img3);
+        ImageView imgProduct1 = (ImageView)view.findViewById(R.id.imgProduct1);
+        ImageView imgProduct2 = (ImageView)view.findViewById(R.id.imgProduct2);
+        ImageView imgProduct3 = (ImageView)view.findViewById(R.id.imgProduct3);
 
-        img1.setTag(AppConstants.IMAGE_MOBILE);
-        img2.setTag(AppConstants.IMAGE_HEADPHONE);
-        img3.setTag(AppConstants.IMAGE_POWERBANK);
+        imgProduct1.setTag(AppConstants.IMAGE_MOBILE);
+        imgProduct2.setTag(AppConstants.IMAGE_HEADPHONE);
+        imgProduct3.setTag(AppConstants.IMAGE_POWERBANK);
 
-        img1.setOnClickListener(this);
-        img2.setOnClickListener(this);
-        img3.setOnClickListener(this);
+        imgProduct1.setOnClickListener(this);
+        imgProduct2.setOnClickListener(this);
+        imgProduct3.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.img1:
-            case R.id.img2:
-            case R.id.img3:
+            case R.id.imgProduct1:
+            case R.id.imgProduct2:
+            case R.id.imgProduct3:
                 dismiss();
                 String tagValue = view.getTag().toString();
                 selectImageListener.onSelectImage(tagValue);

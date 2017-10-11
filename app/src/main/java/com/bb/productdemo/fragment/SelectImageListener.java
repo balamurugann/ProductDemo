@@ -5,5 +5,9 @@ package com.bb.productdemo.fragment;
  */
 
 public interface SelectImageListener {
+    /**
+     * Select the image type from the dialog box. Type will mobile,headphone and powerbank
+     * @param imageType type of image selected
+     */
     void onSelectImage(String imageType);
 }

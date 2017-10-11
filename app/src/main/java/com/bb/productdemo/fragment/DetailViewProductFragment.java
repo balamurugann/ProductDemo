@@ -24,12 +24,14 @@ import com.bb.productdemo.fragment.createproduct.CreateProductFragment;
  * Created by bala.natarajan on 10/10/2017.
  */
 
+/**
+ * To display the detail view of product also have the option to edit the product
+ */
 public class DetailViewProductFragment extends BaseFragment implements View.OnClickListener {
     public final static String TAG = "DetailViewProductFragment";
     public static final String BUNDLE_PRODUCT_DETAIL = "bundle_product_details";
 
-    private Product product;
-
+    private Product mProduct;
 
     @Nullable
     @Override
@@ -48,6 +50,10 @@ public class DetailViewProductFragment extends BaseFragment implements View.OnCl
         lblTitle.setText(getString(R.string.product_detail_title));
     }
 
+    /**
+     * To display the product details
+     * @param view
+     */
     private void initViewsAndDisplayValues(View view){
 
         TextView lblEdit = (TextView)view.findViewById(R.id.lblEdit);
@@ -56,41 +62,50 @@ public class DetailViewProductFragment extends BaseFragment implements View.OnCl
         Bundle bundle = this.getArguments();
         if (bundle != null) {
 
-            product = bundle.getParcelable(BUNDLE_PRODUCT_DETAIL);
-            if(product!=null){
+            mProduct = bundle.getParcelable(BUNDLE_PRODUCT_DETAIL);
+            if(mProduct!=null){
                 TextView lblName = (TextView)view.findViewById(R.id.lblName);
-                setTextAndColor(lblName,product.getName(),"",Color.BLACK,0,"");
+                setTextAndColor(lblName,mProduct.getName(),"",Color.BLACK,0,"");
 
                 TextView lblDescription = (TextView)view.findViewById(R.id.lblDescription);
-                setTextAndColor(lblDescription,product.getDescription(),"",Color.BLACK,0,"");
+                setTextAndColor(lblDescription,mProduct.getDescription(),"",Color.BLACK,0,"");
 
                 TextView lblActualPrice = (TextView)view.findViewById(R.id.lblActualPrice);
-                setTextAndColor(lblActualPrice,getString(R.string.product_actual_price)+": ",product.getActualPrice(),Color.BLACK,Color.RED,"$");
+                setTextAndColor(lblActualPrice,getString(R.string.product_actual_price)+": ",mProduct.getActualPrice(),Color.BLACK,Color.RED,"$");
 
                 TextView lblSalesPrice = (TextView)view.findViewById(R.id.lblSalesPrice);
-                setTextAndColor(lblSalesPrice,getString(R.string.product_sales_price)+": ",product.getSalesPrice(),Color.BLACK,Color.RED,"$");
+                setTextAndColor(lblSalesPrice,getString(R.string.product_sales_price)+": ",mProduct.getSalesPrice(),Color.BLACK,Color.RED,"$");
 
                 TextView lblColors = (TextView)view.findViewById(R.id.lblColors);
-                setTextAndColor(lblColors,getString(R.string.product_color)+": ",product.getColors(),Color.BLACK,Color.GRAY,"");
+                setTextAndColor(lblColors,getString(R.string.product_color)+": ",mProduct.getColors(),Color.BLACK,Color.GRAY,"");
 
 
                 TextView lblSellerName = (TextView)view.findViewById(R.id.lblSellerName);
-                setTextAndColor(lblSellerName,getString(R.string.product_seller_name)+": ",product.getSellerDetails().getName(),Color.BLACK,Color.GRAY,"");
+                setTextAndColor(lblSellerName,getString(R.string.product_seller_name)+": ",mProduct.getSellerDetails().getName(),Color.BLACK,Color.GRAY,"");
 
                 TextView lblSellerAddress = (TextView)view.findViewById(R.id.lblSellerAddress);
-                setTextAndColor(lblSellerAddress,getString(R.string.product_seller_address)+": ",product.getSellerDetails().getAddress(),Color.BLACK,Color.GRAY,"");
+                setTextAndColor(lblSellerAddress,getString(R.string.product_seller_address)+": ",mProduct.getSellerDetails().getAddress(),Color.BLACK,Color.GRAY,"");
 
                 TextView lblSellerConductNumber = (TextView)view.findViewById(R.id.lblSellerConductNumber);
-                setTextAndColor(lblSellerConductNumber,getString(R.string.product_seller_contact_number)+": ",product.getSellerDetails().getMobilenumber(),Color.BLACK,Color.GRAY,"");
+                setTextAndColor(lblSellerConductNumber,getString(R.string.product_seller_contact_number)+": ",mProduct.getSellerDetails().getMobilenumber(),Color.BLACK,Color.GRAY,"");
 
                 ImageView imgProdcut = (ImageView) view.findViewById(R.id.imgProduct);
-                imgProdcut.setTag(product.getImage());
-                setProductImage(imgProdcut,product.getImage());
+                imgProdcut.setTag(mProduct.getImage());
+                setProductImage(imgProdcut,mProduct.getImage());
                 imgProdcut.setOnClickListener(this);
             }
         }
     }
 
+    /**
+     *  To set multi color for same label
+     * @param textView
+     * @param firstMessage
+     * @param secondMessage
+     * @param firstColor
+     * @param secondColor
+     * @param dollorSymbol
+     */
     private void setTextAndColor(TextView textView, String firstMessage, String secondMessage,int firstColor,
                                  int secondColor,String dollorSymbol){
         Spannable word = new SpannableString(firstMessage);
@@ -110,6 +125,10 @@ public class DetailViewProductFragment extends BaseFragment implements View.OnCl
         textView.append(wordTwo);
     }
 
+    /**
+     * Dialog to display full size imageview
+     * @param type
+     */
     private void showFullSizeImage(String type){
         final Dialog dialog = new Dialog(getActivity(),android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -135,7 +154,7 @@ public class DetailViewProductFragment extends BaseFragment implements View.OnCl
                 break;
             case R.id.lblEdit:
                 Bundle args = new Bundle();
-                args.putParcelable(CreateProductFragment.BUNDLE_CREATE_PRODUCT, product);
+                args.putParcelable(CreateProductFragment.BUNDLE_CREATE_PRODUCT, mProduct);
                 CreateProductFragment toFragment = new CreateProductFragment();
                 toFragment.setArguments(args);
                 replaceFragment(toFragment,false, CreateProductFragment.TAG);
